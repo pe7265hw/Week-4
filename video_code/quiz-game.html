@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Game</title>
+</head>
+<body>
+    
+    <p>What is the capital of Wisconsin?</p>
+
+    <button class="wrongChoice">Bayfield</button>
+    <button id = "correctChoice">Madison</button>
+    <button class="wrongChoice">Milwaukee</button>
+
+    <p id = "result"></p>
+
+    <script>
+
+        //wrong buttons variable
+        let wrongButtons = document.querySelectorAll('.wrongChoice')
+
+        //right button variable
+        let correctButton = document.querySelector('#correctChoice')
+        let defaultColor = correctButton.style.background
+
+        //output variable for result
+        let result = document.querySelector('#result')
+
+
+
+        // event listener for right selection
+        correctButton.addEventListener('click', function(){
+            result.innerHTML = 'Correct answer!'
+            correctButton.style.background = 'green'
+        })
+
+        //loop for incorrect choice (both buttons)
+        wrongButtons.forEach(function(wrongButton){
+            wrongButton.addEventListener('click', function(){
+            result.innerHTML='Wrong answer, try again.'})
+            correctButton.style.background = defaultColor // bug somewhere here, background color doesn't return
+        })
+
+
+
+    </script>
+
+</body>
+</html>

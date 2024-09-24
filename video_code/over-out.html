@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mouse Over/Out</title>
+</head>
+<body>
+
+    <p id="mouse-me">Move your mouse here!</p>
+    <script>
+
+        //creates variable for <p id= "mouse-me"
+        let message = document.querySelector('#mouse-me')
+
+        // tracks # of times mouse goes over message
+        let mouseCount = 0
+
+        //event listener to change message when mouse moves over <p>
+        message.addEventListener('mouseover', function(){
+            message.innerHTML = 'Your mouse is on this message' + ' ' + mouseCount
+            mouseCount++
+
+        })
+
+        // event listener to change message when mouse moves out <p>
+        message.addEventListener('mouseout', function(){
+            message.innerHTML = 'Move your mouse here!'
+        })
+
+        //count how many times cursor goes over message
+
+
+    </script>
+    
+</body>
+</html>

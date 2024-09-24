@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Club Membership</title>
+
+  <style>
+      
+      .selected {
+        text-decoration: line-through ;
+        font-style: italic;
+        color: gray;
+      }
+
+      input {
+          width: 100%;
+          padding: 5px;
+          margin: 5px 5px 5px 0px;
+          box-sizing: border-box;
+
+      }
+
+  </style>
+
+</head>
+<body>
+
+    <h1>Student Club Roster</h1>
+
+    <h2>Add Students</h2>
+
+    <label for="student-name">Student Name</label><input id="student-name" name="student-name">
+    <br>
+    <label for="student-id">Student ID</label><input id="student-id" name="student-id">
+    <br>
+    <label for="student-gpa">Student GPA</label><input id="student-gpa" name="student-gpa" type="number">
+    <br>
+    <button id="add-student">Add Student</button>    
+
+    <h2>Student List</h2>
+
+    <p>There are 
+        <span id="student-count">
+          <!-- use JavaScript to count the number of students, and show here -->
+        </span> 
+    student(s) in the club.</p>
+    
+    <p>Click on a student's name to select them</p>
+
+    <ul id="student-list">
+        <!-- use JavaScript to create li elements  -->
+    </ul>
+
+    <button id="remove-selected-students">Remove selected students</button>
+
+<script>
+
+    //button variables
+    let addButton = document.querySelector('#add-student')
+    let removeButton = document.querySelector('#remove-selected-students')
+
+    //count variables
+    let studentCount = document.querySelector('#student-count')
+    incrementCounter = 0
+
+    //sets initial counter
+    studentCount.innerHTML = incrementCounter
+
+    //initial list variable
+    let studentList = document.querySelector('#student-list')
+
+
+
+    //add button click event listener
+    addButton.addEventListener('click', function(){
+
+        // input variables
+        let nameInput = document.querySelector('#student-name')
+        let idInput = document.querySelector('#student-id')
+        let gpaInput = document.querySelector('#student-gpa')
+
+        //input validation
+        if(nameInput.value == 0){
+            alert('Please enter a name')
+            return
+        }
+        else if (idInput.value == 0){
+            alert('Please enter an ID')
+            return
+        }
+        else if (gpaInput.value == 0 || gpaInput.value > 4){
+            alert('GPA must be between 0.1 and 4')
+            return
+        }
+
+        //list variable
+        let newListItem = document.createElement('li')
+
+        //input value variables
+        nameValue = nameInput.value
+        idValue = idInput.value
+        gpaValue = gpaInput.value
+
+        //adds value to ul through studentList & newListItem
+        newListItem.innerHTML = `Name: ${nameValue}, ID: ${idValue}, GPA: ${gpaValue}`
+        studentList.appendChild(newListItem)
+
+        newListItem.addEventListener('click', function(){
+            newListItem.classList.toggle('selected')
+            console.log(newListItem)
+
+        })
+
+        //increments counter and sets new number
+        incrementCounter++
+        studentCount.innerHTML = incrementCounter
+        //reset values
+        nameInput.value = null
+        idInput.value = null
+        gpaInput.value = null
+
+    })
+
+    //--------------------------Problem here ----------------------------------------------
+
+    
+    //------------------------End problem --------------------------------------------------
+
+
+    //remove button click event handler
+    removeButton.addEventListener('click', function(){
+        let liToDelete = document.querySelectorAll('.selected')
+        liToDelete.forEach(function(element) {
+            element.remove()
+        })
+    })
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

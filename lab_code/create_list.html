@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <p>Enter some text to add to the list</p>
+    <input id="new-text"></input>
+    <button id="add-text">Add</button>
+
+    <!--Empty unordered list-->
+    <ul id="list-of-text"></ul>
+
+    <button id="clear">Clear</button>
+
+    <script>
+
+        //creates variables for input, add button and list
+        let textInput = document.querySelector('#new-text')
+        let addButton = document.querySelector('#add-text')
+        let textList = document.querySelector('#list-of-text')
+        let clearButton = document.querySelector('#clear')
+
+        let elementsInList = 0
+        let maxElements = 10
+
+        document.addEventListener('keyup', function(){
+            if(event.keyCode == 13) {
+                addButton.click()
+            }
+        })
+
+        //click event for add button
+        addButton.addEventListener('click', function(){
+
+            // reads the value of the input text
+            let newText = textInput.value
+            
+
+            //ensures text is entered
+             if(newText.length == 0){
+                alert('Please enter text')
+                return
+             }  
+                else if(newText.length > 50){
+                    alert('Dang, what do you have to do today? Thats too many words.')
+                return
+                }
+
+
+            // ensures less than 10 elements
+            if (elementsInList > maxElements){
+                 alert('no more elements can be added')
+                 return
+            }
+
+            // creates a new li element
+            let newListItem = document.createElement('li')
+            //sets the li element to the text from the input
+            newListItem.innerHTML = newText
+            // appends the li element to ul parent
+            textList.appendChild(newListItem)
+            //sets input to null
+            textInput.value = null
+            elementsInList++
+        })
+
+        //click event for clear button
+        clearButton.addEventListener('click', function(){
+            textList.innerHTML = null; // sets li elements to null
+            elementsInList = 0
+        })
+
+    </script>
+
+    
+</body>
+</html>

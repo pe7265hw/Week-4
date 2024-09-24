@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+</head>
+<body>
+
+    
+    <button>Click me!</button>
+
+    <script>
+
+        // variable for button
+        let button = document.querySelector('button')
+
+        //button click event
+        button.addEventListener('click', function(){
+            alert('You clicked the button!') //creates alert
+            button.innerHTML = "You clicked the button!" // sets alert text
+            button.style.backgroundColor = 'red' //changes button color to red
+        })
+    </script>
+    
+</body>
+</html>

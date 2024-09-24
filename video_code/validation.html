@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validation</title>
+</head>
+<body>
+    <p>Please enter your name</p>
+    <input type="text" id="username">
+    <button id="save-un">Save</button>
+
+    <p id="welcome-message"></p>
+    
+    <script>
+        // creates variable for save button
+        let saveButton = document.querySelector('#save-un')
+        // creates variable for input with id=username
+        let nameInput = document.querySelector('#username')
+        //creates variable for <p id=welcome-message> where output goes
+        let welcomeMessage = document.querySelector('#welcome-message')
+
+        //creates a click event listener  for the saveButton variable
+        saveButton.addEventListener('click',function(){
+            let name = nameInput.value // sets a name variable to the value of nameInput variable
+            // if length less than 2 user prompted to enter longer name
+            if (name.length < 2) {
+                welcomeMessage.innerHTML = 'Please enter at lease two messages'
+            }
+            // otherwise input accepted
+            else{
+                welcomeMessage.innerHTML = `Welcome, ${name}!`
+            }
+            
+        })
+
+
+
+
+    </script>
+
+</body>
+</html>

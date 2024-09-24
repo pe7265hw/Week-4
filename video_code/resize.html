@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Window Resize</title>
+</head>
+<body>
+    <h1>Computer Programming</h1>
+    <h2 id = "width"></h2>
+
+    <script>
+        // creates function to determine width of screen
+        function displayWidth(){
+            let width = document.body.scrollWidth; //determines current width of screen
+            let widthDisplayEl = document.querySelector('#width') // variable to display width and shows in h2
+            widthDisplayEl.innerHTML = `Window width = ${width} pixels.` // writes in h2
+        }
+
+        displayWidth() //shows width when program called
+
+        window.addEventListener('resize', displayWidth) // changes when event 'resize' occurs
+
+    </script>
+</body>
+</html>
